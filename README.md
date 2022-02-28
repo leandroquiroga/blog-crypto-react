@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Blog de Criptomonedas (React.js + Firestore + React-Router-Dom + StyledComponents + Api + Google SingUp and Re-Captcha Google)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto realizado con React.js como frontend, firestore como base de datos y styled compoents para los estilos, consume dos API diferentes. Podemos iniciar sesion (Google SingUp o email), registrarnos y recupera contraseña mediante re-captcha de Google
 
-## Available Scripts
 
-In the project directory, you can run:
+Una vez iniciada sesion vamos a poder las ultimas noticias del mundo cripto, se podra ver los ultimos valores de unas de las 25 monedas mas importante de mundo de la criptomonedas y vamos a poder llevar un control propio sobre nuestras monedas favoritas y consultar su precio con diferente monedas del mundo.
 
-### `npm start`
+# Construido con 🛠️
+* React.js
+* React Router DOM v6
+* Custom hooks
+* Styled Components
+* React Toastify
+* React Swipeable List
+* Firebase
+* Google SingUp and Re-Captcha
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Funcionalidades ⚙️
+## Validacion de campos y de elementos ya existentes: 
+Por una parte se valida mediante una funcion que evalua todas las posibilidades de errores y retorna un mensaje. Esto sirve por ejemplo si: Los campos estan vacios, el email no esta registrado, las contraseñas no demasiado debil entre muchas mas validaciones. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Por otro lado validamos si una criptomoneda ya existe en nuestro portfolio personal, en caso de existir nos alertara con una notificacion. 
 
-### `npm test`
+## SignUp with Google y re-Captcha
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Si bien esto se logra gracias a firestore, una vez iniciado sesion vamos a poder ver nustra foto de perfil de nuestra cuenta de google. 
 
-### `npm run build`
+Se utliza re-captcha en caso de que querramos recuperar nuestra contraseña, para validar que no seamos un robot. Si bien hasta que no se coloque el mail y se valide la confirmacion del re-captcha 
+no vamos a poder enviar el email de recuperacion de contraseña
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Rutas privadas y publicas 
+Creamos rutas privadas para que el usuario pueda iniciar sesion para acceder a a las ultimas noticias del mundo cripto, a un control de los ultimos valores y tener nuestras propios criptomonedas como favoritas. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+En caso de no  haber iniciado sesion no vamos a poder utilizar ninguna de esas funcionabilidades. Solo vamos a poder utilizar las funciones de logeo, registro y de recuperacion de contraseña
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Porfolio de criptomonedas 
+Podemos llevar un control propio de nuestras cryptos favoritas, no solo vamos a poder ver su precio real a valor dolar, sino vamos a poder hacer consultas de con diferentes monedas, entre ellas estan: 
 
-### `npm run eject`
+* Peso argentino
+* Euro
+* Peso Japones
+* Entre otras. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Ademas en caso de no utilizar mas alguna criptomonedas vamos a poder eliminarla de una manera sencilla, solamente deslizando la cripto moneda hacia algunos de los lados. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Consumo de Api 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+En este proyecto utilizamos dos APIs diferentes, en uno utilizamos dos endpoint uno para las noticias y el valor acutal de las criptomonedas, en la otra utilizamos un solo endpoint para solamente hacer consultas sobre su valor con cualquier moneda del mundo. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [Crypo Compare](https://min-api.cryptocompare.com/documentation)
+- [Coingecko](https://www.coingecko.com/es)
+## Custom Hooks 
 
-## Learn More
+Se han creados ciertos hooks que se reutilizar en varias partes del proyecto, entre ellos estan por ejemplo: useFetch y useForm que son uno delos mas usados. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Toastify 
+Gracias a una bibioteca de react [React Toastify](https://fkhadra.github.io/react-toastify/introduction) nos permite crear personalizar alertas de diferentes manera, ya sea para cuando se realiza correctamente, o quizas cuando damos un mensaje de alerta, entre tantas.  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## React Swipeable List 
+Es una biblioteca de react [React Swipeable List ](https://github.com/sandstreamdev/react-swipeable-listn) que nos permite realizar determinadas acciones mediante el deslizado sobre un elemento, esta funcionabilidad es remendable para los disposivos mobiles
 
-### Code Splitting
+# Deploy 👨‍💻
+# Contacto 📫
+- [Linkedin](https://www.linkedin.com/in/leanquiroga95/)
+- [Email](mailto:leandroquiroga9514@gmail.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Autor 👤
+Realizado con ❤️ por [Leandro Quiroga](https://github.com/leandroquiroga);
