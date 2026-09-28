@@ -1,7 +1,14 @@
 import type { ReactNode } from 'react';
 import { Logo } from '@/components/layout/logo';
 import { ModeToggle } from '@/components/theme/mode-toggle';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 interface AuthLayoutProps {
   title: string;
@@ -33,7 +40,9 @@ export function AuthLayout({ title, description, children, footer }: AuthLayoutP
           <CardContent>{children}</CardContent>
 
           {footer ? (
-            <CardFooter className="justify-center text-sm text-muted-foreground">{footer}</CardFooter>
+            <CardFooter className="justify-center text-sm text-muted-foreground">
+              {footer}
+            </CardFooter>
           ) : null}
         </Card>
       </div>
