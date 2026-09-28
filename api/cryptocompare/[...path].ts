@@ -10,10 +10,7 @@ import {
  * Handler serverless (formato Vercel). En produccion la API key vive en las
  * variables de entorno del servidor; el cliente solo ve `/api/cryptocompare/...`.
  */
-export default async function handler(
-  req: IncomingMessage,
-  res: ServerResponse,
-): Promise<void> {
+export default async function handler(req: IncomingMessage, res: ServerResponse): Promise<void> {
   const requestUrl = new URL(req.url ?? '/', 'http://localhost');
   const route = parseProxyRoute(requestUrl.pathname);
 
