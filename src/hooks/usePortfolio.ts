@@ -12,7 +12,7 @@ export function usePortfolio() {
   const status = usePortfolioStore((state) => state.status);
   const error = usePortfolioStore((state) => state.error);
 
-  const userId = user?.email ?? user?.uid ?? null;
+  const userId = user?.uid ?? null;
 
   const loadPortfolio = useCallback(async (targetUser: string) => {
     const { setLoading, setCoins, setError } = usePortfolioStore.getState();

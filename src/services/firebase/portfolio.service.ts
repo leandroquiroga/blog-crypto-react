@@ -8,25 +8,22 @@ const portfolioDocumentSchema = z.object({
 });
 
 /**
- * El identificador del documento es el email del usuario para mantener
- * compatibilidad con los datos historicos de Firestore.
+ * El documento se identifica por el uid de Firebase Auth (no por email).
+ * La autorizacion se delega a las reglas de Firestore: request.auth.uid == uid.
  */
-function userDocumentRef(userId: string) {
-  return doc(db, 'usuarios', userId);
+function userDocumentRef(uid: string) {
+  return doc(db, 'usuarios', uid);
 }
 
-export async function getPortfolio(userId: string): Promise<PortfolioCoin[]> {
-  const snapshot = await getDoc(userDocumentRef(userId));
+export async function getPortfolio(uid: string): Promise<PortfolioCoin[]> {
+  const snapshot = await getDoc(userDocumentRef(uid));
 
-  if (!snapshot.exists()) {
-    await setDoc(userDocumentRef(userId), { cryptos: [] });
-    return [];
-  }
+  if (!snapshot.exists()) return [];
 
   const parsed = portfolioDocumentSchema.safeParse(snapshot.data());
   return parsed.success ? parsed.data.cryptos : [];
 }
 
-export async function savePortfolio(userId: string, coins: PortfolioCoin[]): Promise<void> {
-  await setDoc(userDocumentRef(userId), { cryptos: coins }, { merge: true });
+export async function savePortfolio(uid: string, coins: PortfolioCoin[]): Promise<void> {
+  await setDoc(userDocumentRef(uid), { cryptos: coins }, { merge: true });
 }
