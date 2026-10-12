@@ -20,10 +20,17 @@ import { paths } from '@/router/paths';
 import { useAuthStore } from '@/store/auth.store';
 import { getErrorMessage } from '@/utils/errors';
 
+const passwordSchema = z
+  .string()
+  .min(8, 'La contraseña debe tener al menos 8 caracteres.')
+  .regex(/[A-Z]/, 'Debe incluir una letra mayuscula.')
+  .regex(/[0-9]/, 'Debe incluir un numero.')
+  .regex(/[^A-Za-z0-9]/, 'Debe incluir un caracter especial.');
+
 const registerSchema = z
   .object({
     email: z.email('Ingresa un email valido.'),
-    password: z.string().min(6, 'La contrasena debe tener al menos 6 caracteres.'),
+    password: passwordSchema,
     passwordConfirm: z.string().min(1, 'Confirma tu contrasena.'),
   })
   .refine((values) => values.password === values.passwordConfirm, {
