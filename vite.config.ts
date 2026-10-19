@@ -2,16 +2,25 @@ import { fileURLToPath } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
+import { aiProxyPlugin } from './server/ai/ai-proxy-plugin.ts';
+import { coingeckoProxyPlugin } from './server/coingecko-proxy-plugin.ts';
 import { cryptocompareProxyPlugin } from './server/cryptocompare-proxy-plugin.ts';
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), cryptocompareProxyPlugin()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    cryptocompareProxyPlugin(),
+    coingeckoProxyPlugin(),
+    aiProxyPlugin(),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   server: {
+    host: '127.0.0.1',
     port: 5173,
     open: false,
   },
